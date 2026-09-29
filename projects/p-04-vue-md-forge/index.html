@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><meta name="generator" content="Astro v5.18.2"><!-- 重新加载时强制回到顶部(覆盖浏览器 scroll restoration)
+         is:inline:同步执行,必须在内容渲染前完成,避免滚动位置闪烁
+         - scrollRestoration = 'manual':禁用浏览器自动恢复滚动位置
+         - window.scrollTo(top:0):同步滚到顶部(在 HTML 解析前执行,避免 FOUC)
+         - 'instant' behavior:立即滚,不被 CSS scroll-behavior: smooth 干扰
+         - pageshow 兜底:处理 bfcache + 普通刷新 / 浏览器后退 --><script>
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+
+      // 兜底:处理 bfcache(从缓存恢复时也会触发 pageshow)
+      // + 浏览器后退 / 刷新等所有"恢复页面"的场景
+      window.addEventListener('pageshow', function () {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      });
+    </script><!-- 主标题 / 描述 --><title>VUE-md-Forge · Memset</title><meta name="description" content="Vue 3 Markdown 编辑器插件 · 字符自动配对 + 双栏源码预览 + 本地 KaTeX/highlight.js · CSP 友好"><!-- Canonical --><link rel="canonical" href="https://memsetqwq.github.io/projects/p-04-vue-md-forge/"><!-- Favicon — 头像 PNG 多尺寸 --><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:title" content="VUE-md-Forge · Memset"><meta property="og:description" content="Vue 3 Markdown 编辑器插件 · 字符自动配对 + 双栏源码预览 + 本地 KaTeX/highlight.js · CSP 友好"><meta property="og:url" content="https://memsetqwq.github.io/projects/p-04-vue-md-forge/"><meta property="og:image" content="https://memsetqwq.github.io/og-image.png"><!-- Twitter --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="VUE-md-Forge · Memset"><meta name="twitter:description" content="Vue 3 Markdown 编辑器插件 · 字符自动配对 + 双栏源码预览 + 本地 KaTeX/highlight.js · CSP 友好"><!-- 主题色(移动浏览器 UI)— Neo-Editorial 暖炭底 --><meta name="theme-color" content="#0E1118"><meta name="color-scheme" content="dark"><!-- View Transitions --><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><!-- JSON-LD:个人身份 --><script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Memset","url":"https://memsetqwq.github.io","sameAs":["https://github.com/Memsetqwq"]}</script><link rel="stylesheet" href="/_astro/_slug_.gQ4w_QH-.css">
+<link rel="stylesheet" href="/_astro/forge.COxvXy3U.css">
+<style>.icon[data-astro-cid-patnjmll]{display:inline-block;vertical-align:middle;flex-shrink:0}
+.nav[data-astro-cid-dmqpwcec]{position:sticky;top:0;z-index:var(--z-nav);width:100%;background:var(--bg-deep);border-bottom:1px solid var(--line);transition:background var(--dur-base) var(--ease-out-quart)}.nav__container[data-astro-cid-dmqpwcec]{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:4.5rem;padding:0 var(--gutter);gap:1rem}.nav__logo[data-astro-cid-dmqpwcec]{display:inline-flex;align-items:center;gap:.625rem;color:var(--text);transition:color var(--dur-fast)}.nav__logo[data-astro-cid-dmqpwcec]:hover{color:var(--accent)}.nav__logo-img[data-astro-cid-dmqpwcec]{display:block;width:1.75rem;height:1.75rem;border-radius:50%;object-fit:cover;border:1px solid var(--line);flex-shrink:0}.nav__logo-text[data-astro-cid-dmqpwcec]{font-family:var(--font-display);font-style:italic;font-weight:var(--fw-bold);font-size:1.125rem;letter-spacing:-.01em}.nav__menu[data-astro-cid-dmqpwcec]{justify-self:center}.nav__list[data-astro-cid-dmqpwcec]{display:flex;gap:2rem;list-style:none}.nav__link[data-astro-cid-dmqpwcec]{display:inline-flex;align-items:center;font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--text);position:relative;transition:color var(--dur-fast)}.nav__link[data-astro-cid-dmqpwcec]:after{content:"";position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--accent);transition:width var(--dur-base) var(--ease-out-quart)}.nav__link[data-astro-cid-dmqpwcec]:hover{color:var(--accent)}.nav__link[data-astro-cid-dmqpwcec]:hover:after{width:100%}.nav__social[data-astro-cid-dmqpwcec]{justify-self:end;display:flex;gap:.75rem;align-items:center}.nav__social-link[data-astro-cid-dmqpwcec]{display:inline-flex;align-items:center;justify-content:center;width:2.25rem;height:2.25rem;border-radius:var(--radius);color:#fff;transition:color var(--dur-fast),background var(--dur-fast),border-color var(--dur-fast);border:1px solid transparent}.nav__social-link[data-astro-cid-dmqpwcec]:hover{color:var(--accent);background:var(--accent-soft);border-color:var(--accent)}@media(max-width:720px){.nav__container[data-astro-cid-dmqpwcec]{grid-template-columns:auto 1fr auto;gap:.5rem}.nav__menu[data-astro-cid-dmqpwcec],.nav__logo-text[data-astro-cid-dmqpwcec]{display:none}}@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media(prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
+</style></head> <body>  <!-- 主体内容 -->  <header class="nav" data-astro-transition-persist="site-nav" data-astro-cid-dmqpwcec> <div class="nav__container" data-astro-cid-dmqpwcec> <!-- 左:头像小 Logo(替代原 M 字 SVG)— 保持原 1.75rem 尺寸 --> <a href="/" class="nav__logo" aria-label="Memset Home" data-astro-cid-dmqpwcec> <img src="/img/avatar.jpg" alt="" class="nav__logo-img" loading="eager" decoding="async" data-astro-cid-dmqpwcec> <span class="nav__logo-text" data-astro-cid-dmqpwcec>Memset</span> </a> <!-- 中:nav --> <nav class="nav__menu" aria-label="Primary" data-astro-cid-dmqpwcec> <ul class="nav__list" data-astro-cid-dmqpwcec> <li class="nav__item" data-astro-cid-dmqpwcec> <a href="/projects" class="nav__link" data-astro-cid-dmqpwcec> <span class="nav__link-text" data-astro-cid-dmqpwcec>Works</span> </a> </li><li class="nav__item" data-astro-cid-dmqpwcec> <a href="/forge" class="nav__link" data-astro-cid-dmqpwcec> <span class="nav__link-text" data-astro-cid-dmqpwcec>Forge</span> </a> </li><li class="nav__item" data-astro-cid-dmqpwcec> <a href="/#contact" class="nav__link" data-astro-cid-dmqpwcec> <span class="nav__link-text" data-astro-cid-dmqpwcec>Contact</span> </a> </li> </ul> </nav> <!-- 右:Social(只剩 GitHub,删除 Email)— GitHub 配色白色 --> <div class="nav__social" data-astro-cid-dmqpwcec> <a href="https://github.com/Memsetqwq" target="_blank" rel="noopener" aria-label="GitHub" class="nav__social-link" data-astro-cid-dmqpwcec> <img src="/icons/brand/github.svg" width="20" height="20" alt class="icon " style="color: currentColor;" aria-hidden="true" role="presentation" data-astro-cid-patnjmll>  </a> </div> </div> </header>  <main class="project-detail" data-astro-cid-ovxcmftc> <!-- 面包屑 --> <nav class="project-detail__crumb container mono" aria-label="面包屑" data-astro-cid-ovxcmftc> <a href="/" class="project-detail__crumb-link" data-astro-cid-ovxcmftc>Home</a> <span class="project-detail__crumb-sep" aria-hidden="true" data-astro-cid-ovxcmftc>/</span> <a href="/projects" class="project-detail__crumb-link" data-astro-cid-ovxcmftc>Works</a> <span class="project-detail__crumb-sep" aria-hidden="true" data-astro-cid-ovxcmftc>/</span> <span class="project-detail__crumb-current" data-astro-cid-ovxcmftc>P-02</span> </nav> <!-- 头部 --> <header class="project-detail__head container" data-astro-cid-ovxcmftc> <div class="project-detail__meta-head mono" data-astro-cid-ovxcmftc> <span class="project-detail__no" data-astro-cid-ovxcmftc>P-02</span> <span class="project-detail__badge" data-astro-cid-ovxcmftc>★ Featured</span> </div> <h1 class="project-detail__title" data-astro-cid-ovxcmftc>VUE-md-Forge</h1> <p class="project-detail__summary" data-astro-cid-ovxcmftc>Vue 3 Markdown 编辑器插件 · 字符自动配对 + 双栏源码预览 + 本地 KaTeX/highlight.js · CSP 友好</p> <div class="project-detail__meta" data-astro-cid-ovxcmftc> <div class="project-detail__meta-item" data-astro-cid-ovxcmftc> <span class="mono project-detail__meta-label" data-astro-cid-ovxcmftc>Date</span> <span class="mono project-detail__meta-value" data-astro-cid-ovxcmftc>2026/09/29</span> </div> <div class="project-detail__meta-item" data-astro-cid-ovxcmftc> <span class="mono project-detail__meta-label" data-astro-cid-ovxcmftc>Stack</span> <div class="project-detail__tags" data-astro-cid-ovxcmftc> <span class="project-detail__tag mono" data-astro-cid-ovxcmftc>Vue</span><span class="project-detail__tag mono" data-astro-cid-ovxcmftc>Vite</span><span class="project-detail__tag mono" data-astro-cid-ovxcmftc>TypeScript</span><span class="project-detail__tag mono" data-astro-cid-ovxcmftc>Markdown</span><span class="project-detail__tag mono" data-astro-cid-ovxcmftc>KaTeX</span><span class="project-detail__tag mono" data-astro-cid-ovxcmftc>highlight.js</span> </div> </div> <div class="project-detail__meta-item" data-astro-cid-ovxcmftc> <span class="mono project-detail__meta-label" data-astro-cid-ovxcmftc>Links</span> <div class="project-detail__links" data-astro-cid-ovxcmftc> <a href="https://memsetqwq.github.io/forge" target="_blank" rel="noopener noreferrer" class="project-detail__link mono" data-astro-cid-ovxcmftc> <span data-astro-cid-ovxcmftc>Demo</span> <img src="/icons/lucide/external-link.svg" width="14" height="14" alt class="icon " style="color: currentColor;" aria-hidden="true" role="presentation" data-astro-cid-patnjmll>  </a> <a href="https://github.com/CDUESTC-OpenAtom-Open-Source-Club/VUE-md-Forge" target="_blank" rel="noopener noreferrer" class="project-detail__link mono" data-astro-cid-ovxcmftc> <span data-astro-cid-ovxcmftc>Repo</span> <img src="/icons/brand/github.svg" width="14" height="14" alt class="icon " style="color: currentColor;" aria-hidden="true" role="presentation" data-astro-cid-patnjmll>  </a>  </div> </div> </div> </header> <!-- Markdown 正文(v0.2:vue-md-forge MarkdownEngine SSR 渲染) --> <article class="project-detail__content container" data-astro-cid-ovxcmftc> <div class="md-content" data-astro-cid-ovxcmftc><p>VUE-md-Forge 是一个<strong>可作为 npm 包发布、也能独立运行</strong>的 Vue 3 Markdown 编辑器组件。
+目标对标 Typora 的即时渲染(IR)体验,核心特色:<strong>字符自动配对 + 光标居中 + 洛谷式双栏源码预览 + 工具栏对齐 markdown-palettes</strong>。</p>
+<h2 id="它解决什么问题">它解决什么问题</h2>
+<p><code>md-editor-v3</code> 等现成编辑器通常通过 unpkg / jsdelivr 远程加载 markdown-it、highlight.js、katex、字体,导致:</p>
+<ul>
+<li>严格 CSP 环境下被迫 <code>no-highlight: true</code> / <code>no-katex: true</code></li>
+<li><strong>生产环境没有代码高亮,没有数学公式</strong></li>
+<li><code>vue-i18n</code> runtime compiler 引入 <code>new Function</code> 路径,触发 CSP <code>unsafe-eval</code> 警告</li>
+</ul>
+<p>VUE-md-Forge 把 markdown-it / highlight.js / katex 全部作为 <strong>npm 依赖</strong>打入产物:</p>
+<ul>
+<li><strong>零远程加载</strong>(unpkg / jsdelivr / cdnjs 全部不在依赖图里)</li>
+<li><strong>无</strong> <code>new Function</code> 路径</li>
+<li><strong>全程不引入需要 <code>eval</code> 的动态代码</strong></li>
+<li>可走强制 CSP</li>
+</ul>
+<h2 id="核心特性">核心特性</h2>
+<h3 id="字符自动配对beforeinput-事件">字符自动配对(beforeinput 事件)</h3>
+<p>输入 <code>(</code>,自动补 <code>)</code>,光标居中。跳过模式:光标紧贴已存在的右符号时,按 <code>)</code> 移过它,不重复插入。成对删除:Backspace 在 <code>()</code> 中间按一次,删两侧。代码块内静默:<code>\`` 内的 `` </code> `` 不触发配对。</p>
+<p>支持:<code>()</code>、<code>[]</code>、<code>{}</code>、<code>&quot;&quot;</code>、<code>''</code>、<code> </code> ``、<code>*</code>、<code>_</code>、<code>~</code>。</p>
+<h3 id="工具栏对齐-markdown-palettes">工具栏对齐 markdown-palettes</h3>
+<p>21 个按钮 + 4 个分隔符,<strong>完全复制</strong> <a href="https://github.com/luogu-dev/markdown-palettes">luogu-dev/markdown-palettes</a> 的 <code>defaultBtns</code>:</p>
+<p>加粗 · 删除线 · 斜体 · 水平线 · H1..H6 · 无序列表 · 有序列表 · 图片 · 链接 · 代码块 · 表格 · 隐藏/显示预览 · 全屏 · 滚动同步 · 主题切换 · 关于。</p>
+<p>FontAwesome 5 实心图标,H1..H6 用文本字形(与上游 <code>content: 'H'+level</code> 一致)。</p>
+<h3 id="智能粘贴-html-markdown">智能粘贴 HTML → Markdown</h3>
+<p>继承自 club-web 已验证的启发式:shell 命令自动围栏、here-doc 识别、行内码合并、列表碎片合并、图片占位符。</p>
+<h3 id="csp-友好的渲染引擎">CSP 友好的渲染引擎</h3>
+<ul>
+<li><code>markdown-it@14</code> + <code>@vscode/markdown-it-katex</code>(已迁移到维护中的 fork,原 <code>markdown-it-katex@3</code> 与 markdown-it 14 不兼容)</li>
+<li>本地打包的 <code>highlight.js@11</code>(注册 ts / py / bash / xml / css / json / cpp / java / go / sql)</li>
+<li><code>katex@0.16</code></li>
+<li>XSS 净化:<code>sanitizeRenderedMarkdown</code> 在每次 render 后过滤危险标签</li>
+</ul>
+<h2 id="本站在用v02">本站在用:v0.2</h2>
+<p>v0.2 起,本站 <code>/projects/p-04-vue-md-forge</code> 和所有项目详情页的 Markdown 正文<strong>统一由本项目的 <code>MarkdownEngine</code> SSR 渲染</strong>:</p>
+<ul>
+<li>标题自动 slug id(锚点跳转)</li>
+<li>代码块 highlight.js 着色对齐 Neo-Editorial Dark token</li>
+<li>数学公式 KaTeX 渲染(本地字体,无 CDN)</li>
+<li>表格 / 引用 / GFM 任务清单原生</li>
+</ul>
+<p><code>/forge</code> 工具页直接挂 <code>&lt;MdEditor client:only=&quot;vue&quot;&gt;</code>,给访客实时编辑体验。</p>
+<h2 id="技术栈">技术栈</h2>
+<ul>
+<li><strong>Vue 3.5</strong> + <strong>Vite 7</strong> + <strong>TypeScript 5.8</strong></li>
+<li><strong>markdown-it 14</strong> + <strong>@vscode/markdown-it-katex</strong> + <strong>highlight.js 11</strong> + <strong>katex 0.16</strong></li>
+<li><strong>FontAwesome 5</strong>(<code>@fortawesome/vue-fontawesome</code>)</li>
+</ul>
+<p>构建产物(<code>npm run build:lib</code>):</p>
+<ul>
+<li><code>dist/vue-md-forge.js</code>(ESM,~924KB)</li>
+<li><code>dist/vue-md-forge.umd.cjs</code>(UMD,~584KB)</li>
+<li><code>dist/vue-md-forge.css</code>(themes + preview + editor,~1.5MB,含 KaTeX 字体 base64)</li>
+<li><code>dist/index.d.ts</code>(类型)</li>
+</ul>
+<h2 id="上手">上手</h2>
+<pre class="hljs"><code class="language-bash">git <span class="hljs-built_in">clone</span> git@github.com:CDUESTC-OpenAtom-Open-Source-Club/VUE-md-Forge.git
+<span class="hljs-built_in">cd</span> VUE-md-Forge
+npm install
+npm run dev          <span class="hljs-comment"># vite dev server,port 5273</span>
+npm run build:lib    <span class="hljs-comment"># 输出 dist/,可作为 npm 包发布</span>
+</code></pre>
+<p>作为依赖使用:</p>
+<pre class="hljs"><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">MdEditor</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue-md-forge&#x27;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;vue-md-forge/style.css&#x27;</span>;
+</code></pre>
+<h2 id="后续">后续</h2>
+<ul>
+<li>把本插件切回 club-web(<code>origin/develop</code> 新分支),把 <code>MarkdownEditor.vue</code> 替换为这个 npm 包,重新打开强制 CSP + 代码高亮 + 数学公式</li>
+<li>IR overlay 颜色 token(<code>--mdf-overlay-*</code>)已与本博客 Neo-Editorial Dark token 对齐,可作为第三种主题复用</li>
+</ul>
+<p>License: <strong>MIT</strong></p>
+</div> </article> <!-- 底部 --> <footer class="project-detail__foot container" data-astro-cid-ovxcmftc> <a href="/projects" class="project-detail__back mono" data-astro-cid-ovxcmftc> <img src="/icons/lucide/arrow-left.svg" width="14" height="14" alt class="icon " style="color: currentColor;" aria-hidden="true" role="presentation" data-astro-cid-patnjmll>  <span data-astro-cid-ovxcmftc>All works · 02 entries</span> </a> </footer> </main>  </body></html> 
